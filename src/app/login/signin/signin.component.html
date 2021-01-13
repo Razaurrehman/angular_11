@@ -1,0 +1,39 @@
+<div class="login-page">
+    <div class="login-background-image"></div>
+    <div class="content px20">
+      <form class="login-form" [formGroup]="signinForm" (ngSubmit)="signInFormHandle()" novalidate autocomplete="off">
+        <div class="text-center">
+          <h2 class="app-name">Sign In</h2>
+        </div>
+        <div fxLayout="row">
+          <div fxFlexFill>
+            <mat-form-field class="w-100">
+              <input matInput  name="email" id="email" formControlName="email" placeholder="Email" autocomplete="off">
+            </mat-form-field>
+            <div *ngIf="signinForm.controls['email'].invalid && (signinForm.controls['email'].dirty || signinForm.controls['email'].touched)" class="alert alert-danger">
+              <div class="form-error-msgs" *ngIf="signinForm.controls['email'].errors?.required">
+                <span>Email is required</span>
+              </div>
+              <div class="form-error-msgs" *ngIf="signinForm.controls['email'].errors?.pattern">
+                <span>Please provide a valid email address</span>
+              </div>
+            </div>
+            <mat-form-field class="w-100">
+              <input matInput type="password" formControlName="password" placeholder="Password" autocomplete="new-password">
+            </mat-form-field>
+            <div *ngIf="signinForm.controls['password'].invalid && (signinForm.controls['password'].dirty || signinForm.controls['password'].touched)" class="alert alert-danger">
+              <div class="form-error-msgs" *ngIf="signinForm.controls['password'].errors?.required">
+                <span>Password is required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlexFill class="btn-margin">
+            <button type="submit" mat-raised-button color="primary" [style.margin-bottom]="'10px'" [disabled]="signinForm.invalid" class="w-100">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

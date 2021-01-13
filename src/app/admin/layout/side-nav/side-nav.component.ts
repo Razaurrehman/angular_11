@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { childRoutes } from '../../child-routes';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,7 +7,10 @@ import { childRoutes } from '../../child-routes';
 })
 export class SideNavComponent implements OnInit {
   showMenu = false;
-  routes = childRoutes;
+  routes = [{
+    path: 'home',
+    data: { icon: 'dashboard', text: 'Home' }
+  },];
   constructor() {}
 
   ngOnInit() {}

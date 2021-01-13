@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { childRoutes } from './child-routes';
 
 
 const routes: Routes = [
@@ -11,9 +10,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard'
+        redirectTo: 'home'
       },
-      ...childRoutes
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+        data: { icon: 'dashboard', text: 'Dashboard' }
+      },
     ]
   }
 ];
